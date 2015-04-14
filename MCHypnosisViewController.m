@@ -86,9 +86,15 @@
         messageLabel.alpha = 0.0;
         
         // animate the alpha to 1.0
-        [UIView animateWithDuration:0.5 animations:^{
-            messageLabel.alpha = 1.0;
-        }];
+//        [UIView animateWithDuration:0.5 animations:^{
+//            messageLabel.alpha = 1.0;
+//        }];
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseIn animations:^{
+                                        messageLabel.alpha = 1.0;
+                            }
+                         completion:NULL];
         
         // parallax to messageLabel
         UIInterpolatingMotionEffect *motionEffect;
