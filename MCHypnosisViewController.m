@@ -11,6 +11,8 @@
 
 @interface MCHypnosisViewController () <UITextFieldDelegate>
 
+@property (nonatomic, weak) UITextField *textField;
+
 @end
 
 @implementation MCHypnosisViewController
@@ -22,7 +24,8 @@
     MCHypnosisterView *backgroundView = [[MCHypnosisterView alloc] initWithFrame:frame];
     
     // textfield
-    CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
+//    CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
+    CGRect textFieldRect = CGRectMake(40, -30, 240, 30);
     UITextField *textField = [[UITextField alloc] initWithFrame:textFieldRect];
     
     // setting the border style on the text field will allow us to see it more easily
@@ -37,6 +40,7 @@
     // add textfield to view
     [backgroundView addSubview:textField];
     
+    self.textField = textField;
     // set it as *the* view of this view controller
     self.view = backgroundView; 
 }
@@ -151,6 +155,22 @@
     [super viewDidLoad];
     
     NSLog(@"MCHypnosisViewController did load"); 
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:2.0
+                          delay:0.0
+         usingSpringWithDamping:0.25
+          initialSpringVelocity:0.0
+                        options:0
+                     animations:^{
+                        CGRect frame = CGRectMake(40, 70, 240, 30);
+                        self.textField.frame = frame;
+                     }
+                     completion:NULL];
 }
 
 @end
