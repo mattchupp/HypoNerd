@@ -82,6 +82,14 @@
         // add label to the hierarchy
         [self.view addSubview:messageLabel];
         
+        // Set the label's initial alpha
+        messageLabel.alpha = 0.0;
+        
+        // animate the alpha to 1.0
+        [UIView animateWithDuration:0.5 animations:^{
+            messageLabel.alpha = 1.0;
+        }];
+        
         // parallax to messageLabel
         UIInterpolatingMotionEffect *motionEffect;
         motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
