@@ -106,7 +106,9 @@
                 int y = arc4random() % height;
                 messageLabel.center = CGPointMake(x, y);
             }];
-        }completion:NULL];
+        }completion:^(BOOL finished) {
+            NSLog(@"Animation finished");
+        }];
         
         // parallax to messageLabel
         UIInterpolatingMotionEffect *motionEffect;
